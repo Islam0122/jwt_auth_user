@@ -64,20 +64,18 @@ class RegistrationSerializer(serializers.ModelSerializer):
             )
         return attrs
 
+
     def create(self, validated_data):
-        avatar = validated_data.pop('avatar', None)  # Извлекаем аватар, если он передан
         user = User.objects.create(
             username=validated_data['username'],
             email=validated_data['email']
         )
         user.set_password(validated_data['password'])
+
         user.save()
 
-        # Сохраняем профиль
-        profile = Profile.objects.create(user=user)
-        profile.full_name = validated_data.get('full_name', '')
-        if avatar:
-            profile.avatar = avatar  # Устанавливаем аватар
-        profile.save()
+        if "full_name" in validated_data:
+            user.profile.full_name = validated_data['full_name']
+            user.profile.save()
 
         return user
