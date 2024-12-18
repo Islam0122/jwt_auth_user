@@ -1,6 +1,8 @@
 import os
-
+from pathlib import Path
 from .env_reader import env
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECRET_KEY
 SECRET_KEY = env('SECRET_KEY')
@@ -14,12 +16,8 @@ ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("PGDATABASE"),
-        'USER': os.getenv("PGUSER"),
-        'PASSWORD': os.getenv("PGPASSWORD"),
-        'HOST': os.getenv("PGHOST"),
-        'PORT': os.getenv("PGPORT"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

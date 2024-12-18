@@ -11,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 PRODUCTION = True
 
+
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -41,6 +42,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -146,8 +148,8 @@ if not PRODUCTION:
 else:
     from .prod import *
 
-if DEBUG:
-    INTERNAL_IPS = ['127.0.0.1','localhost',]
-    MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+# if DEBUG:
+#     INTERNAL_IPS = ['127.0.0.1','localhost',]
+#     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 
 
