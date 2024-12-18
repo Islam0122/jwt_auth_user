@@ -10,9 +10,9 @@ SECRET_KEY = env('SECRET_KEY')
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 PRODUCTION = True
+
 INSTALLED_APPS = [
     'jazzmin',
-    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -20,15 +20,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    "corsheaders",
-    'rest_framework_simplejwt',
+    'rest_framework.authtoken',
+    'djoser',
+    'corsheaders',
     'drf_yasg',
+    'debug_toolbar',
 
     # > apps <
     "app.user"
-    ]
 
-
+]
 # MIDDLEWARE
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -41,7 +42,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'core.urls'
 
