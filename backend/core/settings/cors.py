@@ -29,6 +29,7 @@ CORS_ORIGIN_WHITELIST = [
     "http://localhost:*",
     "https://duishobaevislam01.up.railway.app",  # ваш продакшн сервер
     "http://localhost:3000",  # локальный сервер React (по умолчанию порт 3000)
-    "http://localhost:5173",  # локальный сервер React (по умолчанию порт 3000)
+    "http://localhost:5173",
+    "http://localhost:5185",# локальный сервер React (по умолчанию порт 3000)
 
 ]
